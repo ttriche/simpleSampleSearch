@@ -1,0 +1,11 @@
+Package: simpleSampleSearch
+Type: Package
+Title: Lightweight search engine for SRA and GEO
+Version: 0.1
+Date: 2015-09-01
+Author: Tim Triche, Jr.
+Maintainer: Tim Triche, Jr. <tim.triche@gmail.com>
+Description: Idiotically simple search for GEO and SRA (yet somehow useful)
+Depends: DBI, GEOquery, GEOmetadb, SRAdb, SummarizedExperiment
+VignetteBuilder: knitr
+License: LGPL
