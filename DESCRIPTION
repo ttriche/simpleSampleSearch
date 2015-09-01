@@ -1,7 +1,7 @@
 Package: simpleSampleSearch
 Type: Package
 Title: Lightweight search engine for SRA and GEO
-Version: 0.2
+Version: 0.3
 Date: 2015-09-01
 Author: Tim Triche, Jr.
 Maintainer: Tim Triche, Jr. <tim.triche@gmail.com>
