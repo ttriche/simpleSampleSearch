@@ -1,5 +1,5 @@
 # simpleSampleSearch
-a trivial R package to search GEO and SRA without the huge hassle of the NCBI interfaces
+The stupid man's GEOmetadb!
 
 Installation:
 ```r
@@ -12,7 +12,31 @@ Usage:
 ```r
 library(simpleSampleSearch)
 checkForUpdates() ## if there is a new release of the geoMetaDb database, pull it
-getExperiments("glio", gpl="GPL570") ## search phrase "glio" on Affy hgu133plus2 by update
+```
+
+Look for new Illumina HumanMethylation450 datasets:
+```r
+getRecent(simpleSampleSearch:::HM450)
+```
+```
+data frame with 10 rows and 2 columns
+                                                          descr         gse
+                                                    <character> <character>
+1  DNA methylation signatures triggered by prenatal maternal st    GSE72354
+2  Low dose of DNA-demethylating agents target colorectal cance    GSE62086
+3  Epigenetics and Proteomics Join Transcriptomics in the Quest    GSE70478
+4  Cell-specific methylation patterns in TB patients and househ    GSE72338
+5                Epigenome analysis of ischemic stroke patients    GSE69138
+6  The idiopathic preterm delivery methylation profile in umbil    GSE66459
+7  Intra-gene DNA methylation variability is a technically and     GSE72021
+8  Epigenetic landscape correlates with genetic subtype but doe    GSE69229
+9  Age-associated genomic methylation in the TOPS Family Study     GSE60132
+10 Epigenome-wide and Transcriptome-wide Analyses Reveal Gestat    GSE70494
+```
+
+Get series with the word "glio" in their name, on Affy hgu133plus2, by most recent update:
+```
+getExperiments("glio", gpl="GPL570")
 ```
 ```
 data frame with 10 rows and 2 columns
@@ -29,6 +53,8 @@ data frame with 10 rows and 2 columns
 9       Genes regulated by miR-127-3p in glioblastoma cell line    GSE50173
 10 DNA methylation alteration and gene expression sigature in b    GSE50774
 ```
+
+Look at a particular series' details:
 ```r
 getDetails("GSE55541")
 ```
@@ -42,3 +68,5 @@ $submission_date
 $type
 [1] "Expression profiling by array"
 ```
+
+Coming soon(ish): SRA search that is less excruciating than NCBI's interface.
