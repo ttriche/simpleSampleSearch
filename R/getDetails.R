@@ -4,9 +4,11 @@
 #' 
 #' @return      a short list of details
 #'
-#' @export
+#' @aliases gD 
 #' 
+#' @export
 getDetails <- function(gse) {
+  if (!exists("geodb")) checkForUpdates()
   con <- dbConnect(SQLite(), geodb)
   res <- dbGetQuery(con, 
                     paste0("SELECT title, submission_date, type ",
@@ -15,8 +17,7 @@ getDetails <- function(gse) {
   return(as.list(res))
 }
 
-#' @describeIn getDetails
+#' @describeIn getDetails   two-letter shortcut for lazy typists
 #' 
 #' @export
-#'
 gD <- getDetails

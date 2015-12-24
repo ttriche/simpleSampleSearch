@@ -1,3 +1,8 @@
+#' Download an up-to-date GEOmetadb SQLite file if it has been more than a day
+#' FIXME: look at the actual filename to determine whether it's been updated!
+#'
+#' @param whatKind  either "GEO" or "SRA" (the latter is not well supported yet)
+#'
 #' @export
 checkForUpdates <- function(whatKind=c("GEO","SRA")) {
 

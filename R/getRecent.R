@@ -6,9 +6,13 @@
 #' 
 #' @return      a data.frame, containing between 0 and ((from-to) + 1) rows 
 #' 
-#' @export
+#' @aliases gR 
+#' 
+#' @seealso \code{\link{platforms}} for shortcuts (aliases for specific GPLs)
 #'
+#' @export
 getRecent <- function(gpl, from=1, to=10) {
+  if (!exists("geodb")) checkForUpdates()
   con <- dbConnect(SQLite(), geodb)
   res <- dbGetQuery(con,
                     paste("SELECT substr(title, 1, 60) AS descr,", 
@@ -23,8 +27,7 @@ getRecent <- function(gpl, from=1, to=10) {
   return(res)
 }
 
-#' @describeIn getRecent 
+#' @describeIn getRecent  two-letter shortcut for lazy typists
 #' 
 #' @export
-#'
 gR <- getRecent

@@ -1,14 +1,14 @@
 #' get the most recently updated experiments for a given search phrase
 #' 
 #' @param string  the phrase to search for
-#' @param limit   max records to return (default: 10) 
+#' @param limit   optional, max records to return (default: 10) 
 #' @param gpl     optional, specific platform to limit to (default: NULL)
 #' 
 #' @return      a data.frame, containing between 0 and ((from-to) + 1) rows 
 #' 
 #' @export
-#'
 getExperiments <- function(string, limit=10, gpl=NULL) {
+  if (!exists("geodb")) checkForUpdates()
   con <- dbConnect(SQLite(), geodb)
   if (!is.null(gpl)) {
     gplstring <- paste("AND gse_gpl.gpl =", paste0("'", gpl, "'"))
@@ -29,8 +29,7 @@ getExperiments <- function(string, limit=10, gpl=NULL) {
   return(res)
 }
 
-#' @describeIn getExperiments
+#' @describeIn getExperiments   two-letter shortcut for lazy typists
 #'
 #' @export
-#'
 gE <- getExperiments
