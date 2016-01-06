@@ -2,16 +2,18 @@
 % Please edit documentation in R/checkForUpdates.R
 \name{checkForUpdates}
 \alias{checkForUpdates}
-\title{Download an up-to-date GEOmetadb SQLite file if it has been more than a day
-FIXME: look at the actual filename to determine whether it's been updated!}
+\title{Download an up-to-date GEOmetadb or SRAmetadb file if it has been > 1 day}
 \usage{
 checkForUpdates(whatKind = c("GEO", "SRA"))
 }
 \arguments{
 \item{whatKind}{either "GEO" or "SRA" (the latter is not well supported yet)}
 }
+\value{
+the path to the updated SQLite file, invisibly
+}
 \description{
-Download an up-to-date GEOmetadb SQLite file if it has been more than a day
 FIXME: look at the actual filename to determine whether it's been updated!
+FIXME: use options()$simpleSampleSearchCache to determine where to look
 }
 

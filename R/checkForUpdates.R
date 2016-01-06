@@ -1,32 +1,38 @@
-#' Download an up-to-date GEOmetadb SQLite file if it has been more than a day
-#' FIXME: look at the actual filename to determine whether it's been updated!
+#' Download an up-to-date GEOmetadb or SRAmetadb file if it has been > 1 day
 #'
+#' FIXME: look at the actual filename to determine whether it's been updated!
+#' FIXME: use options()$simpleSampleSearchCache to determine where to look 
+#' 
 #' @param whatKind  either "GEO" or "SRA" (the latter is not well supported yet)
+#'
+#' @return  the path to the updated SQLite file, invisibly
 #'
 #' @export
 checkForUpdates <- function(whatKind=c("GEO","SRA")) {
 
-  ## FIXME: refactor a bunch of this crap so that it triggers upon calling a fn
-  message("Please remind the author not to write filthy hardcoded functions")
-
-  ## cache dir
-  ## FIXME: set this in options()$geodbpath / options$sradbpath
-  geodbpath <- paste(Sys.getenv("HOME"), "R", "GEOmetadb", sep="/")
-  if (!dir.exists(geodbpath)) dir.create(geodbpath, recursive=TRUE)
-
-  ## important to include the trailing .gz or it will error out!
-  ## cache file (today only; should it instead check for newness?)
+  whatKind <- match.arg(whatKind)
   today <- format(Sys.time(), "%Y%m%d")
-  geodbfile <- paste("GEOmetadb", today, "sqlite", sep=".")
-  geogzipped <- paste(geodbfile, "gz", sep=".")
-  ## FIXME: refactor so that this works for SRAdb too
-  if (!file.exists(paste0(geodbpath, "/", geodbfile))) {
-    unlink(list.files(geodbpath, pattern="^GEOmetadb.*.sqlite$"))
-    getSQLiteFile(destdir=geodbpath, destfile=geogzipped)
-  }
+  dbPrefix <- paste0(whatKind, "metadb")
+  dbFile <- paste(dbPrefix, today, "sqlite", sep=".")
+  oldFilePattern <- paste0("^", dbPrefix, ".*.sqlite$")
 
-  ## FIXME: this is terrible
-  geodb <<- paste(geodbpath, geodbfile, sep="/")
-  return(geodb)
+  # FIXME: set this in options()$simpleSampleSearchCache
+  simpleSampleSearchCache <- paste(Sys.getenv("HOME"), "R", sep="/")
+  cachePath <- paste(simpleSampleSearchCache, dbPrefix, sep="/")
+  if (!dir.exists(cachePath)) dir.create(cachePath, recursive=TRUE)
+
+  # Fetch the db if needed
+  message(paste("Checking for", whatKind, "updates..."))
+  if (!file.exists(paste0(cachePath, "/", dbFile))) {
+    unlink(list.files(cachePath, pattern=oldFilePattern))
+    switch(whatKind,
+           GEO=getSQLiteFile(destdir=cachePath, destfile=paste0(dbFile, ".gz")),
+           SRA=getSRAdbFile(destdir=cachePath, destfile=paste0(dbFile, ".gz")))
+  }
+  db <- paste(cachePath, dbFile, sep="/")
+  if (whatKind == "GEO") geodb <<- db
+  if (whatKind == "SRA") sradb <<- db
+
+  invisible(db)
 
 }
