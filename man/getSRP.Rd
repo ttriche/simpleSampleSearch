@@ -4,22 +4,24 @@
 \alias{gFQ}
 \alias{gSRP}
 \alias{getSRP}
-\title{get samples for an SRA series (SRP)}
+\title{get samples (or other stuff) for an SRA series (SRP) or other identifier}
 \usage{
 gFQ(SRP, ...)
 
-getSRP(SRP)
+getSRP(SRP, ...)
 
-gSRP(SRP)
+gSRP(SRP, ...)
 }
 \arguments{
 \item{SRP}{the series identifier}
+
+\item{...}{other arguments to pass to SRAdb::sraConvert}
 }
 \value{
 the samples and some descriptions
 }
 \description{
-get samples for an SRA series (SRP)
+get samples (or other stuff) for an SRA series (SRP) or other identifier
 }
 \section{Functions}{
 \itemize{
