@@ -9,7 +9,7 @@
 getFASTQ <- function(SRP, ...) {
   if (!exists("sradb")) sradb <- checkForUpdates("SRA")
   con <- dbConnect(dbDriver("SQLite"), sradb)
-  getFASTQfile(..., sra_con=con)
+  getFASTQfile(in_acc=getSRP(SRP)$run, ..., sra_con=con)
   dbDisconnect(con)
 }
 
