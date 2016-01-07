@@ -6,6 +6,8 @@
 \title{get FASTQs for an SRA series (SRP)}
 \usage{
 getFASTQ(SRP, ...)
+
+gFQ(SRP, ...)
 }
 \arguments{
 \item{SRP}{the series identifier}
@@ -15,4 +17,8 @@ getFASTQ(SRP, ...)
 \description{
 get FASTQs for an SRA series (SRP)
 }
+\section{Functions}{
+\itemize{
+\item \code{gFQ}: shortcut for lazy typists
+}}
 

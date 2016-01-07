@@ -11,8 +11,7 @@ getDetails <- function(gse) {
   if (!exists("geodb")) checkForUpdates()
   con <- dbConnect(SQLite(), geodb)
   res <- dbGetQuery(con, 
-                    paste0("SELECT title, submission_date, type ",
-                             "FROM gse WHERE gse = '", gse, "'"))
+                    paste0("SELECT * FROM gse WHERE gse = '", gse, "'"))
   dbDisconnect(con)
   return(as.list(res))
 }

@@ -13,7 +13,7 @@ getFASTQ <- function(SRP, ...) {
   dbDisconnect(con)
 }
 
-#' @describeIn getSRP shortcut for lazy typists
+#' @describeIn getFASTQ   shortcut for lazy typists
 #' 
 #' @export
 gFQ <- getFASTQ
