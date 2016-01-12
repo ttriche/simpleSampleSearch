@@ -19,13 +19,13 @@ getRecent(HUEX1)
 
 getRecent(PLUS2)
 
-getRecent(HM27) and ozymandias::fetch27k(getRecent(HM27)$gse[1])
+getRecent(HM27)
 
-getRecent(HM450) and ozymandias::fetch450k(getRecent(HM450)$gse[1])
+getRecent(HM450)
 
-getRecent(HMEPIC) and ozymandias::fetchEPIC(getRecent(HMEPIC)$gse[1])
+getRecent(HMEPIC)
 
-getRecent(HM850) and ozymandias::fetch850k(getRecent(HM850)$gse[1])
+getRecent(HM850)
 }
 \description{
 quick shortcuts for some platforms; could certainly use more
@@ -44,7 +44,7 @@ HMEPIC -- Illumina HumanMethylationEPIC array
 HM850 -- Illumina HumanMethylationEPIC array
 }
 \seealso{
-\code{\link{gR}} for getRecent, \code{\link{gD}} for getDetails, and \code{\link{gE}} for getExperiments (functions to search on various terms)
+\code{\link{getRecent}}, \code{\link{getDetails}}, \code{\link{getExperiments}}, \code{\link{getGSE}}, \code{\link{getSRA}}, and so forth
 }
 \keyword{datasets}
 

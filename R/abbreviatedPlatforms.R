@@ -1,7 +1,7 @@
 #' quick shortcuts for some platforms; could certainly use more
 #' FIXME: add something similar for SRAdb, eg. BISULFITE, RNASEQ, ATACSEQ, etc.
 #'
-#' @seealso \code{\link{gR}} for getRecent, \code{\link{gD}} for getDetails, and \code{\link{gE}} for getExperiments (functions to search on various terms)
+#' @seealso \code{\link{getRecent}}, \code{\link{getDetails}}, \code{\link{getExperiments}}, \code{\link{getGSE}}, \code{\link{getSRA}}, and so forth
 #'
 #' @aliases shortcuts platforms
 #' @name abbreviatedPlatforms
@@ -24,28 +24,28 @@ PLUS2 <- "GPL570"
 
 #' HM27 -- Illumina HumanMethylation27 array
 #' 
-#' @usage getRecent(HM27) and ozymandias::fetch27k(getRecent(HM27)$gse[1])
+#' @usage getRecent(HM27)
 #' @rdname abbreviatedPlatforms
 #' @export
 HM27 <- "GPL8490"
 
 #' HM450 -- Illumina HumanMethylation450 array
 #' 
-#' @usage getRecent(HM450) and ozymandias::fetch450k(getRecent(HM450)$gse[1])
+#' @usage getRecent(HM450)
 #' @rdname abbreviatedPlatforms
 #' @export
 HM450 <- "GPL13534"
 
 #' HMEPIC -- Illumina HumanMethylationEPIC array
 #' 
-#' @usage getRecent(HMEPIC) and ozymandias::fetchEPIC(getRecent(HMEPIC)$gse[1])
+#' @usage getRecent(HMEPIC)
 #' @rdname abbreviatedPlatforms
 #' @export
 HMEPIC <- "GPL21145"
 
 #' HM850 -- Illumina HumanMethylationEPIC array
 #' 
-#' @usage getRecent(HM850) and ozymandias::fetch850k(getRecent(HM850)$gse[1])
+#' @usage getRecent(HM850)
 #' @rdname abbreviatedPlatforms
 #' @export
 HM850 <- HMEPIC

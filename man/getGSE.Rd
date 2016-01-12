@@ -5,16 +5,16 @@
 \alias{getGSE}
 \title{get SummarizedExperiment(s) for a GSE(s) (usually expression, maybe DNA meth)}
 \usage{
-getGSE(gse, map = FALSE, combine = FALSE)
+getGSE(gse, combine = FALSE, map = FALSE)
 
-gG(gse, map = FALSE, combine = FALSE)
+gG(gse, combine = FALSE, map = FALSE)
 }
 \arguments{
 \item{gse}{the series identifier}
 
-\item{map}{try to map the rows to sensible symbols? (don't use this yet)}
+\item{combine}{try to flatten (cbind) the resulting SEs? (default: FALSE)}
 
-\item{combine}{try to combine the list of SEs? (don't do this either yet)}
+\item{map}{try to map the rows to sensible symbols? (default: FALSE)}
 }
 \value{
 a list of the SE(s) or subclass(es) thereof
