@@ -9,7 +9,7 @@
 #' 
 #' @export
 getSummary <- function(gse, collapse="; ") {
-  paste(getDetails(gse), collapse=collapse)
+  getDetails(gse)[c("gse","status","title","type","summary","contributor")]
 }
 
 #' @describeIn getDetails   two-letter shortcut for lazy typists
