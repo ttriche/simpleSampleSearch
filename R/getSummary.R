@@ -9,7 +9,8 @@
 #' 
 #' @export
 getSummary <- function(gse, collapse="; ") {
-  getDetails(gse)[c("gse","status","title","type","summary","contributor")]
+  c(getDetails(gse)[c("gse","status","title","type","summary","contributor")],
+    URL=paste0("http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=", gse))
 }
 
 #' @describeIn getDetails   two-letter shortcut for lazy typists
