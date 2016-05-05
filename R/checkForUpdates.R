@@ -31,14 +31,14 @@ checkForUpdates <- function(whatKind=c("GEO","SRA")) {
     # GEOmetadb getSQLfile stopped working, so here is a fix for it... 
     GEOurl <- "https://dl.dropboxusercontent.com/u/51653511/GEOmetadb.sqlite.gz"
     getGEOmetadb <- function(GEOurl, destfile) { # {{{
-      download.file(GEOurl, destfile=destFile)
+      download.file(GEOurl, destfile=destfile)
       gunzip(destfile, overwrite=TRUE)
       con <- dbConnect(SQLite(), gsub("[.]gz$", "", destfile))
       dat <- dbGetQuery(con, "select * from metaInfo")
       dbDisconnect(con)
       cat("Metadata associate with downloaded file:\n")
       print(dat)
-      return(unzippedlocalfile)
+      return(sub(".gz", "", destfile))
     } # }}}
     switch(whatKind,
            GEO=getGEOmetadb(GEOurl, destfile=destFile),
